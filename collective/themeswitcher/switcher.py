@@ -9,6 +9,7 @@ from Products.CMFCore.utils import getToolByName
 from plone.app.theming.interfaces import IThemeSettings
 
 logger = logging.getLogger("collective.themeswitcher")
+THEME_KEY = "themeswitcher"
 
 
 class IThemeSwitcher(interface.Interface):
@@ -185,8 +186,6 @@ class MobileThemeSwitcher(PloneThemeSwitcher):
                 self._is_mobile = False
         logger.debug("is mobile -> %s" % self._is_mobile)
         return self._is_mobile
-
-THEME_KEY = "themeswitcher"
 
 
 class CookieThemeSwitcher(PloneThemeSwitcher):

@@ -51,6 +51,7 @@
       name="themeswitcher_mobile"
       class=".switcher.MobileThemeSwitcher"
       permission="zope2.View"
+      allowed_attributes="isMobile"
       />
   <browser:page
       for="*"
@@ -63,6 +64,7 @@
       name="themeswitcher_mobile_cookie"
       class=".switcher.MobileAndCookieThemeSwitcher"
       permission="zope2.View"
+      allowed_attributes="isMobile"
       />
 
 

@@ -4,7 +4,7 @@ Changelog
 1.0a3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add allowed_attributes isMobile on mobile themeswitcher
 
 
 1.0a2 (2013-04-29)
