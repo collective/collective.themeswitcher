@@ -149,7 +149,7 @@ class IntegrationTestPloneThemeSwitcher(base.IntegrationTestCase):
 TEST_MOBILE_UA = [
     "Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 "
     "(KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3",
-    "Mozilla/5.0 (iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) ",
+    "Mozilla/5.0 (iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) "
     "AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7D11",
     "Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91) "
     "AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
@@ -192,7 +192,9 @@ class UnitTestMobileThemeSwitcher(base.UnitTestCase):
         for UA in TEST_MOBILE_UA:
             self.switcher._is_mobile = None
             self.request["HTTP_USER_AGENT"] = UA
-            self.assertTrue(self.switcher.isMobile(), UA)
+            isMobile = self.switcher.isMobile()
+            msg = "%s is not considererd as a mobile user agent"
+            self.assertTrue(isMobile, msg % UA)
 
         for UA in TEST_DESKTOP_UA:
             self.switcher._is_mobile = None
