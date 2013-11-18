@@ -63,7 +63,8 @@ class UnitTestPloneThemeSwitcher(base.UnitTestCase):
         super(UnitTestPloneThemeSwitcher, self).setUp()
         self.switcher = PloneThemeSwitcher(self.portal, self.request)
         self.switcher.portal_registry = fake.FakeRegistry()
-        self.switcher.available_skins = ['Sunburst Theme', 'Plone Classic Theme']
+        skins = ['Sunburst Theme', 'Plone Classic Theme']
+        self.switcher.available_skins = skins
         self.switcher.available_themes = ['plonetheme.mobile']
 
     def test_getDefaultSkin(self):
@@ -132,7 +133,8 @@ class IntegrationTestPloneThemeSwitcher(base.IntegrationTestCase):
 
         self.switcher.theme = 'example'
         #setup the settings and check the reuslts
-        self.portal.portal_registry['collective.themeswitcher.currentTheme'] = u'example'
+        key = 'collective.themeswitcher.currentTheme'
+        self.portal.portal_registry[key] = u'example'
         self.portal.portal_registry['collective.themeswitcher.enabled'] = True
         settings = self.switcher.getSettings(self._old_settings)
         self.assertEqual(settings.currentTheme, 'example')
@@ -145,17 +147,22 @@ class IntegrationTestPloneThemeSwitcher(base.IntegrationTestCase):
 
 #some user agent
 TEST_MOBILE_UA = [
-    "Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3",
-    "Mozilla/5.0 (iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7D11",
-    "Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 "
+    "(KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3",
+    "Mozilla/5.0 (iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) ",
+    "AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7D11",
+    "Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91) "
+    "AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
 ]
 
 TEST_DESKTOP_UA = [
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:19.0) Gecko/20100101 Firefox/19.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:19.0) "
+    "Gecko/20100101 Firefox/19.0",
     "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)",
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)",
     "Opera/9.20 (Windows NT 6.0; U; en)",
-    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.75 Safari/537.1",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 "
+    "(KHTML, like Gecko) Chrome/21.0.1180.75 Safari/537.1",
 ]
 
 
@@ -168,9 +175,11 @@ class UnitTestMobileThemeSwitcher(base.UnitTestCase):
     def test_update(self):
         self.assertIsNone(self.switcher._is_mobile)
         self.switcher.portal_registry = fake.FakeRegistry()
-        self.switcher.available_skins = ['Sunburst Theme', 'Plone Classic Theme']
+        skins = ['Sunburst Theme', 'Plone Classic Theme']
+        self.switcher.available_skins = skins
         self.switcher.available_themes = ['plonetheme.mobile']
-        self.switcher.portal_registry.registry["collective.themeswitcher.theme.mobile"] = "plonetheme.mobile"
+        key = "collective.themeswitcher.theme.mobile"
+        self.switcher.portal_registry.registry[key] = "plonetheme.mobile"
         self.switcher.update()
         self.assertNotEqual(self.switcher.theme, "plonetheme.mobile")
         #reset cache
