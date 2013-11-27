@@ -155,8 +155,17 @@ you have to add a registry.xml with::
 How to install
 ==============
 
-.. image:: https://secure.travis-ci.org/toutpt/collective.themeswitcher.png
-    :target: http://travis-ci.org/toutpt/collective.themeswitcher
+.. image:: https://pypip.in/v/collective.themeswitcher/badge.png
+    :target: https://crate.io/packages/collective.themeswitcher/
+
+.. image:: https://pypip.in/d/collective.themeswitcher/badge.png
+    :target: https://crate.io/packages/collective.themeswitcher/
+
+.. image:: https://secure.travis-ci.org/collective/collective.themeswitcher.png
+    :target: http://travis-ci.org/#!/collective/collective.themeswitcher
+
+.. image:: https://coveralls.io/repos/collective/collective.themeswitcher/badge.png?branch=master
+    :target: https://coveralls.io/r/collective/collective.themeswitcher
 
 This addon can be installed has any other addons. please follow official
 documentation_
