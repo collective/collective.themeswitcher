@@ -134,7 +134,7 @@ class MobileThemeSwitcher(PloneThemeSwitcher):
         r"maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|"
         r"phone|p(ixi|re)\\/|plucker|pocket|psp|series(4|6)0|symbian|treo|"
         r"up\\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino",
-        re.I|re.M
+        re.I | re.M
     )
     reg_v = re.compile(
         r"1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\\-)"
@@ -162,7 +162,7 @@ class MobileThemeSwitcher(PloneThemeSwitcher):
         r"\\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\\-v)|vm40|v"
         r"oda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\\-| )|webc|whit|wi("
         r"g |nc|nw)|wmlb|wonu|x700|yas\\-|your|zeto|zte\\-",
-        re.I|re.M
+        re.I | re.M
     )
 
     def __init__(self, context, request):
